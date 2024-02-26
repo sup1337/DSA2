@@ -1,0 +1,79 @@
+//
+// Created by laszl on 2024. 02. 26..
+//
+
+#include "functions.h"
+
+#include <iostream>
+
+using namespace std;
+
+// Függvény az adatok beolvasására a tömbbe
+void tomb_beolvasasa(int *tomb, int meret) {
+    cout << "Kérem adja meg a tömb elemeit:\n";
+    for (int i = 0; i < meret; ++i) {
+        cin >> tomb[i];
+    }
+}
+
+// Függvény a tömb kiírására
+void tomb_kiirasa(int *tomb, int meret) {
+    cout << "A tömb elemei:\n";
+    for (int i = 0; i < meret; ++i) {
+        cout << tomb[i] << " ";
+    }
+    cout << endl;
+}
+
+// Lineáris keresés a tömbben
+int linearis_kereses(int *tomb, int meret, int keresett) {
+    for (int i = 0; i < meret; ++i) {
+        if (tomb[i] == keresett) {
+            return i; // Ha megtaláltuk, visszatérünk az indexszel
+        }
+    }
+    return -1; // Ha nem találtuk meg, -1-et adunk vissza
+}
+
+// Bináris keresés a rendezett tömbben
+int binaris_kereses(const int *tomb, int meret, int keresett) {
+    int bal = 0, jobb = meret - 1;
+    while (bal <= jobb) {
+        int kozep = (bal + jobb) / 2;
+        if (tomb[kozep] == keresett) {
+            return kozep; // Ha megtaláltuk, visszatérünk az indexszel
+        } else if (tomb[kozep] < keresett) {
+            bal = kozep + 1;
+        } else {
+            jobb = kozep - 1;
+        }
+    }
+    return -1; // Ha nem találtuk meg, -1-et adunk vissza
+}
+
+// Legnagyobb közös osztó kiszámítása
+int lnko(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+// Legkisebb közös többszörös kiszámítása
+int legkisebb_kozos_tobbszoros(int a, int b) {
+    return (a * b) / lnko(a, b);
+}
+
+// Hatványozás függvénye
+int hatvany(int a, int k) {
+    int eredmeny = 1;
+    for (int i = 0; i < k; ++i) {
+        eredmeny *= a;
+    }
+    return eredmeny;
+}
+
+
+
