@@ -12,6 +12,9 @@ int binaris_kereses(const int *tomb, int meret, int keresett);
 int lnko(int a, int b);
 int lkkt(int a, int b);
 int hatvany(int a, int k);
+int hatvanyRec(int a , int k);
+int inverseNumber(int n);
+int inverseNumberRec(int n,int fn);
 
 
 #endif //FUNCTIONS_H

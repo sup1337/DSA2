@@ -60,6 +60,9 @@ int lnko(int a, int b) {
     }
     return a;
 }
+// int lnkoRec(int a , int b) {
+//     if ()
+// }
 
 // Legkisebb közös többszörös kiszámítása
 int legkisebb_kozos_tobbszoros(int a, int b) {
@@ -75,5 +78,28 @@ int hatvany(int a, int k) {
     return eredmeny;
 }
 
+int hatvanyRec(int a , int k) {
+    if(k==0) return 1;
+    return hatvanyRec(a,k-1)*a;
+}
+int inverseNumber(int n){
+    int eredmeny=0;
+    int temp;
+    while(n>9) {
+        temp = n % 10;
+        n = n / 10;
+        eredmeny=eredmeny * 10 + temp;
+    }
+    return eredmeny * 10 + n;
+}
 
+int inverseNumberRec(int n, int fn=0) {
+    if (n == 0) {
+        return fn;
+    }
+    if (n > 9) {
+        return inverseNumberRec(n / 10, fn * 10 + n % 10);
+    }
+    return inverseNumberRec(n / 10, fn * 10 + n);
+}
 

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 
+#include "functions.h"
+
 using namespace std;
 
 void nagyobbHatvanyKiirasa(double szam1, double szam2) {
@@ -13,13 +15,19 @@ void nagyobbHatvanyKiirasa(double szam1, double szam2) {
 }
 
 int main() {
-    double szam1, szam2;
-    cout << "elso szamot: ";
-    cin >> szam1;
-    cout << "masodik szamot: ";
-    cin >> szam2;
+    // double szam1, szam2;
+    // cout << "elso szamot: ";
+    // cin >> szam1;
+    // cout << "masodik szamot: ";
+    // cin >> szam2;
+    //
+    // nagyobbHatvanyKiirasa(szam1, szam2);
 
-    nagyobbHatvanyKiirasa(szam1, szam2);
+    cout << "Eredmeny: " << hatvanyRec(2, 3) << endl;
+
+    cout<< "inverse number: " << inverseNumber(56789);
+    cout << endl;
+    cout<< "inverse number: " << inverseNumberRec(56789,0);
 
     return 0;
 }
