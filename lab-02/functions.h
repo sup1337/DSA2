@@ -4,6 +4,7 @@
 
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
+#include <fstream>
 
 void tomb_beolvasasa(int *tomb, int meret);
 void tomb_kiirasa(int *tomb, int meret);
@@ -15,6 +16,8 @@ int hatvany(int a, int k);
 int hatvanyRec(int a , int k);
 int inverseNumber(int n);
 int inverseNumberRec(int n,int fn);
+void readArrayRec(int *a, int n, std::ifstream &f);
+void printArrayRec(int *a, int n);
 
 
 #endif //FUNCTIONS_H

@@ -28,6 +28,11 @@ int main() {
     cout<< "inverse number: " << inverseNumber(56789);
     cout << endl;
     cout<< "inverse number: " << inverseNumberRec(56789,0);
+    int n = 5;
+    int a [5];
+    ifstream f("be.txt");
+    readArrayRec(a,n,f);
+    printArrayRec(a, n);
 
     return 0;
 }
