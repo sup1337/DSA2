@@ -25,7 +25,6 @@ void printArrayRec(int *a, int n) {
     if(n>0) printArrayRec(a, n-1);
 }
 
-
 // Függvény a tömb kiírására
 void tomb_kiirasa(int *tomb, int meret) {
     cout << "A tömb elemei:\n";
