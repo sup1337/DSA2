@@ -1,6 +1,6 @@
 #include <iostream>
-
 #include "functions.h"
+
 int main() {
     vector<Food> foods = {
             {"spenotos gomba", 200},
@@ -11,31 +11,20 @@ int main() {
             {"citromtorta", 500}
     };
 
-    int n;
-    cout << "Adj meg n erteket: ";
-    cin >> n;
+    int n = 5;
+    vector<vector<int>> a = {
+            {7, 0, 0, 0, 0},
+            {9, 5, 0, 0, 0},
+            {1, 99, 4, 0, 0},
+            {21, 7, 33, 17, 0},
+            {2, 15, 8, 3, 1}
+    };
 
-    vector<vector<int>> a(n, vector<int>(n));
+    int S = INT_MAX;
+    cout << "Greedy(0, 0, 0) erteke: " << greedy(a, 0, 0, 0) << endl;
+    cout << "Bt(0, 0, 0) erteke: " << Bt(a,0,0,0,S) << endl;
 
-//    cout << "Adj meg " << n << "x" << n << " meretu matrixot:" << endl;
-//    for (int i = 0; i < n; ++i) {
-//        for (int j = 0; j < n; ++j) {
-//            cin >> a[i][j];
-//        }
-//    }
-//    int S = INT_MAX;
-//    cout << "G(0, 0, 0) erteke: " << G(a, 0, 0, 0) << endl;
-//    cout << "Bt(0, 0, 0) erteke: " << Bt(a,0,0,0,S) << endl;
-//
-//    /*
-//     7 0 0 0 0
-//     9 5 0 0 0
-//     1 99 4 0 0
-//     21 7 33 17 0
-//     2 15 8 3 1
-//       */
-
-    int maxCalories = 2000;
+    int maxCalories = 1000;
 
     vector<pair<string, int>> menu = selectMenu(foods, maxCalories);
 
@@ -45,5 +34,4 @@ int main() {
     }
 
     return 0;
-
 }

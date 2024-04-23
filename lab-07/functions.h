@@ -1,6 +1,3 @@
-//
-// Created by laszl on 2024. 04. 15..
-//
 
 #ifndef LAB_07_FUNCTIONS_H
 #define LAB_07_FUNCTIONS_H
@@ -15,7 +12,7 @@
 using namespace std;
 
 // Function declarations
-int G(std::vector<std::vector<int>>& a, int i, int j, int s);
+int greedy(vector<vector<int>> &a, int i, int j, int s);
 int Bt(std::vector<std::vector<int>>& a, int i, int j, int s, int& S);
 
 // Class declaration
@@ -24,6 +21,8 @@ public:
     Food(std::string n, int c);
     std::string name;
     int calories;
+    float gramm;
+
 };
 
 // Function to select menu
