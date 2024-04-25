@@ -5,20 +5,22 @@
 #ifndef LAB_08_HEADER_H
 #define LAB_08_HEADER_H
 
+#include <utility>
 #include <vector>
 #include <string>
 
+using namespace std;
 // Az Exam struktúra definíciója
 struct Exam {
-    std::string name; // A vizsga neve
+    string name; // A vizsga neve
     int score;        // A vizsga pontszáma
     // Konstruktor az Exam inicializálásához
-    Exam(std::string n, int s) : name(n), score(s) {}
+    Exam(string n, int s) : name(std::move(n)), score(s) {}
 };
 
 // Függvénydeklarációk
-void findCombinations(std::vector<int>& candidates, int target, std::vector<int>& combination, std::vector<std::vector<int>>& result, int start);
-std::vector<std::vector<int>> combinationSum(std::vector<int>& candidates, int target);
+void findCombinations(vector<int>& candidates, int target, vector<int>& combination, vector<vector<int>>& result, int start);
+vector<vector<int>> combinationSum(vector<int>& candidates, int target);
 bool compareExams(const Exam &a, const Exam &b);
 
 
