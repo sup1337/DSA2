@@ -15,14 +15,14 @@ void tomb_beolvasasa(int *tomb, int meret) {
         cin >> tomb[i];
     }
 }
-void readArrayRec(int *a, int n, ifstream &f) {
-    f >> a[n];
-    if(n>0) readArrayRec(a, n-1 , f);
+void readArrayRec(int *tomb, int hossz, ifstream &f) {
+    f >> tomb[hossz];
+    if(hossz > 0) readArrayRec(tomb, hossz - 1 , f);
 }
 
-void printArrayRec(int *a, int n) {
-    cout << a[n] << endl;
-    if(n>0) printArrayRec(a, n-1);
+void printArrayRec(int *tomb, int hossz) {
+    cout << tomb[hossz] << endl;
+    if(hossz > 0) printArrayRec(tomb, hossz - 1);
 }
 
 // Függvény a tömb kiírására

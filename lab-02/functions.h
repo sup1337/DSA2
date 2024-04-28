@@ -16,8 +16,8 @@ int hatvany(int a, int k);
 int hatvanyRec(int a , int k);
 int inverseNumber(int n);
 int inverseNumberRec(int n,int fn);
-void readArrayRec(int *a, int n, std::ifstream &f);
-void printArrayRec(int *a, int n);
+void readArrayRec(int *tomb, int hossz, std::ifstream &f);
+void printArrayRec(int *tomb, int hossz);
 
 
 #endif //FUNCTIONS_H
