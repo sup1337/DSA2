@@ -2,26 +2,24 @@
 // Created by laszl on 2024. 04. 25..
 //
 
+
 #ifndef LAB_08_HEADER_H
 #define LAB_08_HEADER_H
 
 #include <utility>
-#include <vector>
 #include <string>
 
-using namespace std;
-// Az Exam struktúra definíciója
-struct Exam {
-    string name; // A vizsga neve
-    int score;        // A vizsga pontszáma
-    // Konstruktor az Exam inicializálásához
-    Exam(string n, int s) : name(std::move(n)), score(s) {}
+// Az Vizsga struktúra definíciója
+struct Vizsga {
+    std::string nev; // A vizsga neve
+    int pontszam;        // A vizsga pontszáma
+    // Konstruktor az Vizsga inicializálásához
+    Vizsga(std::string n, int s) : nev(std::move(n)), pontszam(s) {}
 };
 
 // Függvénydeklarációk
-void findCombinations(vector<int>& candidates, int target, vector<int>& combination, vector<vector<int>>& result, int start);
-vector<vector<int>> combinationSum(vector<int>& candidates, int target);
-bool compareExams(const Exam &a, const Exam &b);
-
+void kombinaciokKeresese(int jeloltek[], int meret, int cel, int kombinacio[], int kombinacioMeret, int start, int eredmeny[], int& eredmenyIndex);
+int** osszegekKombinacioja(int jeloltek[], int meret, int cel, int& eredmenyMeret);
+bool vizsgakOsszehasonlitasa(const Vizsga &a, const Vizsga &b);
 
 #endif //LAB_08_HEADER_H

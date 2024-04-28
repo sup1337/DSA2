@@ -1,31 +1,34 @@
 //
 // Created by laszl on 2024. 04. 25..
 //
+
 #include "header.h"
-#include <vector>
 
-using namespace std;
-
-void findCombinations(vector<int>& candidates, int target, vector<int>& combination, vector<vector<int>>& result, int start) {
-    if (target == 0) {
-        result.push_back(combination);
+void kombinaciokKeresese(int jeloltek[], int meret, int cel, int kombinacio[], int kombinacioMeret, int start, int eredmeny[], int& eredmenyIndex) {
+    if (cel == 0) {
+        for (int i = 0; i < kombinacioMeret; ++i) {
+            eredmeny[eredmenyIndex++] = kombinacio[i];
+        }
         return;
     }
-    for (int i = start; i < candidates.size(); ++i) {
-        if (candidates[i] > target)
+    for (int i = start; i < meret; ++i) {
+        if (jeloltek[i] > cel)
             continue;
-        combination.push_back(candidates[i]);
-        findCombinations(candidates, target - candidates[i], combination, result, i);
-        combination.pop_back();
+        kombinacio[kombinacioMeret++] = jeloltek[i];
+        kombinaciokKeresese(jeloltek, meret, cel - jeloltek[i], kombinacio, kombinacioMeret, i, eredmeny, eredmenyIndex);
+        kombinacioMeret--;
     }
 }
 
-vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-    vector<vector<int>> result;
-    vector<int> combination;
-    findCombinations(candidates, target, combination, result, 0);
-    return result;
+int** osszegekKombinacioja(int jeloltek[], int meret, int cel, int& eredmenyMeret) {
+    int** eredmeny = new int*[10000]; // Maximum 10000 kombináció
+    int kombinacio[100]; // Maximum 100 elemű kombináció
+    int eredmenyIndex = 0;
+    kombinaciokKeresese(jeloltek, meret, cel, kombinacio, 0, 0, *eredmeny, eredmenyIndex);
+    eredmenyMeret = eredmenyIndex;
+    return eredmeny;
 }
 
-bool compareExams(const Exam &a, const Exam &b)  {
-    return a.score > b.score;}
+bool vizsgakOsszehasonlitasa(const Vizsga &a, const Vizsga &b) {
+    return a.pontszam > b.pontszam;
+}
