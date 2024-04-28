@@ -2,40 +2,50 @@
 
 int main()
 {
-//    ifstream input("bemenet.txt");
-//    if(!input.is_open()){
-//        cout << " nem nyilt meg A FILE";
-//        exit(EXIT_FAILURE);
-//    }
-//    int n;
-//    input >> n;
-//    vector<string> colors(n);
-//    for (int i = 0; i < n; ++i) {
-//        input >> colors[i];
-//    }
-//    input.close();
-//
-//    set <vector<string>> flags = generateFlags(colors);
-//    cout << "Az osszes zaszlok szama:" << flags.size()<< endl;
-//    cout << "Az osszes zaszlo:" << endl;
-//    for(auto flag: flags){
-//        if (flag[(flag.size() - 1) / 2] == "PIROS" && flag[0] != "PIROS") {
-//            for (auto color : flag) {
-//                cout << color << " ";
-//            }
-//            cout << endl;
-//        }
-//    }
+    // Fájl megnyitása
+    ifstream bemenet("bemenet.txt");
+    if(!bemenet.is_open()){
+        cout << "A fajl nem nyilt meg.";
+        exit(EXIT_FAILURE);
+    }
+    int n;
+    // Színek számának beolvasása
+    bemenet >> n;
+    // Színek tömb létrehozása
+    string szinek[n];
+    // Színek beolvasása
+    for (int i = 0; i < n; ++i) {
+        bemenet >> szinek[i];
+    }
+    // Fájl bezárása
+    bemenet.close();
 
+    // Zászlók halmazának generálása
+    set <string*> zaszlok = generateFlags(szinek, n);
+    // Összes zászló számának kiírása
+    cout << "Az osszes zaszlo szama: " << zaszlok.size() << endl;
+    cout << "Az osszes zaszlo:" << endl;
+    // Zászlók kiírása
+    for(auto zaszlo: zaszlok){
+        if (zaszlo[(n - 1) / 2] == "PIROS" && zaszlo[0] != "PIROS") {
+            for (int i = 0; i < n; ++i) {
+                cout << zaszlo[i] << " ";
+            }
+            cout << endl;
+        }
+    }
 
-    string text;
-    cout << "Irj be egy stringet: ";
-    cin >> text;
+    // Szöveg beolvasása
+    string szoveg;
+    cout << "irj be egy szoveget: ";
+    cin >> szoveg;
 
-    if (isPalindrome(text,0,text.length()-1 )) {
+    // Palindrom ellenőrzése
+    if (isPalindrome(szoveg, 0, szoveg.length()-1 )) {
         cout << "A szoveg palindrom" << endl;
     } else {
         cout << "A szoveg nem palindrom." << endl;
     }
 
+    return 0;
 }

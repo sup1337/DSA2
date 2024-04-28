@@ -1,20 +1,16 @@
-//
-// Created by laszl on 2024. 04. 25.
-//
+// functions.h
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
 
-#ifndef LAB_09_FUNCTIONS_H
-#define LAB_09_FUNCTIONS_H
 #include <iostream>
-#include <vector>
 #include <set>
 #include <fstream>
 #include <algorithm>
 
-
 using namespace std;
 
-set<vector<string>> generateFlags(vector<string> colors);
-bool isPalindrome(string& text, int start, int end);
+// Függvénydeklarációk
+set<string*> generateFlags(string szinek[], int m);
+bool isPalindrome(string& szoveg, int start, int end);
 
-
-#endif //LAB_09_FUNCTIONS_H
+#endif // FUNCTIONS_H

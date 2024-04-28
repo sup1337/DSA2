@@ -1,56 +1,63 @@
-//
-// Created by laszl on 2024. 04. 25.
-//
-
+// functions.cpp
 #include "functions.h"
-set<vector<string>> generateFlags(vector<string> colors) {
-    int pirosIndex = -1;
-    int m = colors.size();
-    set<vector<string>> flags;
 
+// Zászlók halmazának generálása
+set<string*> generateFlags(string szinek[], int m) {
+    int pirosIndex = -1;
+    set<string*> zaszlok;
+
+    // PIROS indexének keresése
     for(int i = 0; i < m; ++i) {
-        if(colors[i] == "PIROS") {
+        if(szinek[i] == "PIROS") {
             pirosIndex = i;
             break;
         }
     }
 
-
+    // Zászlók generálása
     for(int i = 1; i <= m; i += 2) {
         do {
-            vector<string> flag;
+            // Új zászló tömb létrehozása
+            string* zaszlo = new string[m];
 
+            // Színek másolása az új zászlóba
             for(int j = 0; j < i / 2; ++j) {
-                flag.push_back(colors[j]);
+                zaszlo[j] = szinek[j];
             }
 
-            flag.push_back("PIROS");
+            // PIROS hozzáadása
+            zaszlo[i / 2] = "PIROS";
 
+            // Színek másolása az új zászlóba
             for(int j = i / 2 + 1; j < i; ++j) {
-                flag.push_back(colors[j - 1]);
+                zaszlo[j] = szinek[j - 1];
             }
 
-            flags.insert(flag);
-        } while(next_permutation(colors.begin(), colors.end()));
+            // Új zászló hozzáadása a halmazhoz
+            zaszlok.insert(zaszlo);
+        } while(next_permutation(szinek, szinek + m));
     }
 
-    return flags;
+    return zaszlok;
 }
-bool isPalindrome(string& text, int start, int end) {
 
+// Palindrom ellenőrzése
+bool isPalindrome(string& szoveg, int start, int end) {
     if (start >= end) {
         return true;
     }
 
-    while (start < end && !isalnum(text[start])) {
+    // Szöveg elejéről és végéről az első és utolsó nem-alphanumeric karakterek kihagyása
+    while (start < end && !isalnum(szoveg[start])) {
         ++start;
     }
-    while (start < end && !isalnum(text[end])) {
+    while (start < end && !isalnum(szoveg[end])) {
         --end;
     }
-    if (tolower(text[start]) != tolower(text[end])) {
+    // Karakterek összehasonlítása
+    if (tolower(szoveg[start]) != tolower(szoveg[end])) {
         return false;
     }
 
-    return isPalindrome(text, start + 1, end - 1);
+    return isPalindrome(szoveg, start + 1, end - 1);
 }
