@@ -7,6 +7,9 @@
 #include <iostream>
 
 using namespace std;
+//x: Egy tömb, amelyben a kombinációkat tároljuk.
+//n: A kombináció hossza.
+//k: Az aktuális pozíció a kombinációban.
 
 void Bt(int *x, int n, int k) {
     for(x[k] = 0; x[k] <= 9; x[k]++){
@@ -24,7 +27,8 @@ void kiir(int *array, int n){
     }
     cout << endl;
 }
-
+// a függvény ellenőrzi, hogy az aktuális szám hozzáadása egy permutációhoz ígéretes-e,
+// azaz még nem szerepelt-e az előző elemek között.
 
 bool igeretes(int *x, int k) {
     for (int i = 1; i < k-1 ; ++i) {
@@ -34,7 +38,8 @@ bool igeretes(int *x, int k) {
     }
     return true;
 }
-
+// függvény generálja az összes lehetséges kerekpár kombinációt egy adott számrendszerben.
+// A paraméterek hasonlóak a Bt függvényhez.
 
 void kerekpar(int *x, int n, int k) {
     for (x[k] = 0; x[k] <= 9; x[k]++) {
@@ -46,7 +51,8 @@ void kerekpar(int *x, int n, int k) {
         }
     }
 }
-
+//Ez a függvény az összes lehetséges Descartes-szorzatot generálja egy adott számrendszerben.
+// A paraméterek hasonlóak a Bt függvényhez.
 void descartes(int *x, int n, int k) {
     for(x[k] = 1; x[k] <= n; x[k]++){
         if(k < n){
@@ -58,7 +64,7 @@ void descartes(int *x, int n, int k) {
     }
 }
 
-
+//Ez a függvény ellenőrzi, hogy egy adott kombináció ígéretes-e, azaz a számsorrend növekvő-e.
 void permutacio(int *x, int n, int k) {
     for(x[k] = 1; x[k] <= n; x[k]++){
         if(igeretes(x,k)){
@@ -71,6 +77,8 @@ void permutacio(int *x, int n, int k) {
         }
     }
 }
+
+//Ez a függvény ellenőrzi, hogy egy adott kombináció ígéretes-e, azaz a számsorrend növekvő-e.
 bool ellenorizKombinacio(int * array, int index)
 {
     for (int i = 1; i <= index - 1; i++)
@@ -79,6 +87,7 @@ bool ellenorizKombinacio(int * array, int index)
     return true;
 }
 
+// Ez a függvény generálja az összes lehetséges kombinációt egy adott számrendszerben visszalépéses módszerrel
 void BackTrackingKombinacio(int * array, int n, int k, int index)
 {
     if (index == k + 1)
@@ -92,7 +101,7 @@ void BackTrackingKombinacio(int * array, int n, int k, int index)
         }
 }
 
-
+// Ez a függvény ellenőrzi, hogy egy adott variáció érvényes-e, azaz nem tartalmaz-e ismétlődő elemeket.
 bool ellenorizVariacio(int * array, int index)
 {
     for (int i = 1; i <= index - 1; i++)
@@ -100,7 +109,7 @@ bool ellenorizVariacio(int * array, int index)
             return false;
     return true;
 }
-
+// Ez a függvény generálja az összes lehetséges variációt egy adott számrendszerben visszalépéses módszerrel.
 void BackTrackingVariacio(int * array, int n, int k, int index)
 {
     if (index == k + 1)
